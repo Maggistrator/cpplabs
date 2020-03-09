@@ -21,16 +21,16 @@ Graphic::Graphic(SDL_Surface *sf, double (*func)(double), float a, float b)
 }
 void Graphic::draw()
 {
-    double _x = a, _y = func.integer(_x), temp_x, temp_y;
+    //double _x = a, _y = func.integer(_x), temp_x, temp_y;
     //SDL рисует от левого верхнего угла, а мне нужно от левого нижнего - нужно вывести зависимость координат
-    do{
+    for(int i = 0,_x = a, _y = func.integer(_x), temp_x, temp_y; i < (abs(a)-abs(b))/dx; i++){
         temp_x = _x;
         temp_y = _y;
         _x += dx;
         _y = func.integer(_x);
         Draw_Line(sf, temp_x, temp_y, _x, _y, 0xFFFFFFFF);
+        SDL_Flip(sf);
     }
-    while(_x < b);
 }
 
 Graphic::Point* Graphic::convertCoords(Graphic::Point *pt)

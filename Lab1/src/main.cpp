@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   text_color.r = 0;
   text_color.g = 0;
   text_color.b = 255;
-  if(text_surface = TTF_RenderUTF8_Solid(fnt, hello_world, text_color))
+  if((text_surface = TTF_RenderUTF8_Solid(fnt, hello_world, text_color)))
   {
     SDL_BlitSurface(text_surface, NULL, screen, &dest);
     SDL_FreeSurface(text_surface);

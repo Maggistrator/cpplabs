@@ -189,15 +189,16 @@
 	"begin_code.h"
 	"close_code.h"
 
-1583359566 source:/home/sova/Development/Memeland/sdl/Lab1/src/Graphic.cpp
+1583523269 source:/home/sova/Development/Memeland/sdl/Lab1/src/Graphic.cpp
 	"Graphic.h"
-	<stdio.h>
+	<math.h>
+	<SDL_draw/SDL_draw.h>
 
 1583413349 /home/sova/Development/Memeland/sdl/Lab1/include/Graphic.h
 	<SDL/SDL.h>
 	<stack>
 
-1583410864 source:/home/sova/Development/Memeland/sdl/Lab1/src/main.cpp
+1583426211 source:/home/sova/Development/Memeland/sdl/Lab1/src/main.cpp
 	<SDL/SDL.h>
 	<SDL_ttf.h>
 	"Graphic.h"
