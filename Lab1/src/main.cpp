@@ -1,10 +1,11 @@
 #include <SDL/SDL.h>
 #include "Graphic.h"
 #include <float.h>
+#include <cmath>
 
 
-int usless_func(int x){
-    return x;
+float usless_func(float x){
+    return (x*x)/(x-2);
 }
 
 int main(int argc, char *argv[])
@@ -13,11 +14,11 @@ int main(int argc, char *argv[])
   SDL_Event event;
   if (SDL_Init(SDL_INIT_VIDEO))
     return 1;
-  if(!(screen=SDL_SetVideoMode(640,480,32, SDL_ANYFORMAT))){
+  if(!(screen=SDL_SetVideoMode(800,600,16, SDL_ANYFORMAT))){
     SDL_Quit();
     return 1;
   }
-  Graphic *g = new Graphic(screen, &usless_func, 1.f, 200.f);
+  Graphic *g = new Graphic(screen, &usless_func, -1.f, 9.f);
   g->draw();
 
   while(SDL_WaitEvent(&event)){

@@ -9,8 +9,7 @@
 class Graphic
 {
     public:
-        Graphic(SDL_Surface *sf, int (*func)(int), float a, float b);
-        Graphic(SDL_Surface *sf, double (*func)(double), float a, float b);
+        Graphic(SDL_Surface *sf, float (*func)(float), float a, float b);
         /**Рисует график*/
         void draw();
         /**Возвращает установленный шаг аргумента*/
@@ -38,17 +37,13 @@ class Graphic
         float scaleFactor;//коэффициент масштабирования графика, чтобы он занимал все окно
         float a, b;//границы интервала построения графика
         float dx = 1; //Приращение аргумента | Шаг построения графика
-        bool isIntFunctPassed;//флаг, указывающий на то, какого типа функция хранится в UniversalFunction
         //Указатель на функцию, график которой следует построить
-        union UniversalFunction{
-            int (*integer)(int);
-            double (*real)(double);
-        } func;
+        float (*func)(float);
         /* Раскомментить на средний уровень
          * stack <point> pointsOfFracture;
         */
         //пересчитывает координаты от левого верхнего угла на левый нижний
-        Point * convertCoords(Point *pt);
+        void convertCoords(float*, float*);
 };
 
 #endif // GRAPHIC_H

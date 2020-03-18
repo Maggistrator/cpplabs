@@ -1,0 +1,83 @@
+# depslib dependency file v1.0
+1079031252 source:/home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/SDL_draw.c
+	"SDL_draw.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<wchar.h>
+	"Draw_Pixel.c"
+	"Draw_Pixel.c"
+	"Draw_Pixel.c"
+	"Draw_Pixel.c"
+	"Draw_Line.c"
+	"Draw_Line.c"
+	"Draw_Line.c"
+	"Draw_Line.c"
+	"Draw_Circle.c"
+	"Draw_Circle.c"
+	"Draw_Circle.c"
+	"Draw_Circle.c"
+	"Draw_FillCircle.c"
+	"Draw_FillCircle.c"
+	"Draw_FillCircle.c"
+	"Draw_FillCircle.c"
+	"Draw_HLine.c"
+	"Draw_HLine.c"
+	"Draw_HLine.c"
+	"Draw_HLine.c"
+	"Draw_VLine.c"
+	"Draw_VLine.c"
+	"Draw_VLine.c"
+	"Draw_VLine.c"
+	"Draw_Rect.c"
+	"Draw_Rect.c"
+	"Draw_Rect.c"
+	"Draw_Rect.c"
+	"Draw_Ellipse.c"
+	"Draw_Ellipse.c"
+	"Draw_Ellipse.c"
+	"Draw_Ellipse.c"
+	"Draw_FillEllipse.c"
+	"Draw_FillEllipse.c"
+	"Draw_FillEllipse.c"
+	"Draw_FillEllipse.c"
+	"Draw_Round.c"
+	"Draw_Round.c"
+	"Draw_Round.c"
+	"Draw_Round.c"
+	"Draw_FillRound.c"
+	"Draw_FillRound.c"
+	"Draw_FillRound.c"
+	"Draw_FillRound.c"
+
+1583418463 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/SDL_draw.h
+	<SDL/SDL.h>
+	"begin_code.h"
+	"close_code.h"
+
+1326954606 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/CodeBlocks/SDL/include/begin_code.h
+
+1326954606 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/CodeBlocks/SDL/include/close_code.h
+
+1079031252 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Pixel.c
+
+1079031252 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Line.c
+
+1079031252 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Circle.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_FillCircle.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_HLine.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_VLine.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Rect.c
+
+1079031252 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Ellipse.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_FillEllipse.c
+
+1079031252 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_Round.c
+
+1029325208 /home/user/Denis_Levikhin/libs/src/SDL_draw-1.2.13/src/Draw_FillRound.c
+

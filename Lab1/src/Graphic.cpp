@@ -1,44 +1,52 @@
 #include "Graphic.h"
 #include <math.h>
 #include <SDL_draw/SDL_draw.h>
+#define PITCH (sf->pitch / 4)
 
-Graphic::Graphic(SDL_Surface *sf, int (*func)(int), float a, float b)
+Graphic::Graphic(SDL_Surface *sf, float (*func)(float), float a, float b)
 {
     this->sf = sf;
-    this->func.integer = func;
-    this->isIntFunctPassed = true;
+    this->func = func;
     this->a = a;
     this->b = b;
 }
 
-Graphic::Graphic(SDL_Surface *sf, double (*func)(double), float a, float b)
-{
-    this->sf = sf;
-    this->func.real = func;
-    this->isIntFunctPassed = false;
-    this->a = a;
-    this->b = b;
-}
 void Graphic::draw()
 {
-    //double _x = a, _y = func.integer(_x), temp_x, temp_y;
-    //SDL рисует от левого верхнего угла, а мне нужно от левого нижнего - нужно вывести зависимость координат
-    for(int i = 0,_x = a, _y = func.integer(_x), temp_x, temp_y; i < (abs(a)-abs(b))/dx; i++){
-        temp_x = _x;
-        temp_y = _y;
-        _x += dx;
-        _y = func.integer(_x);
-        Draw_Line(sf, temp_x, temp_y, _x, _y, 0xFFFFFFFF);
-        SDL_Flip(sf);
+// Lock surface if needed
+  if (SDL_MUSTLOCK(sf))
+    if (SDL_LockSurface(sf) < 0)
+      return;
+
+    float p_x = a, p_y = func(p_x), n_x, n_y;
+    //convertCoords(&prev);
+
+    while((n_x=p_x+dx) != b+dx){
+        n_y = func(n_x);
+        if(!isinf(n_y)){
+            puts("works~");
+            //convertCoords(&next);
+            Draw_Line(sf, p_x, p_y, n_x, n_y,0xFFFFFF);
+        } else {
+            puts("inf!");
+            Draw_Circle(sf, n_x, n_y = func(n_x+0.005f), 3, 0xFFFFFF);
+        }
+        p_x = n_x;
+        p_y = n_y;
     }
+
+  // Unlock if needed
+  if (SDL_MUSTLOCK(sf))
+    SDL_UnlockSurface(sf);
+
+  // Tell SDL to update the whole screen
+  SDL_UpdateRect(sf, 0, 0, 640, 480);
 }
 
-Graphic::Point* Graphic::convertCoords(Graphic::Point *pt)
+void Graphic::convertCoords(float * x, float * y)
 {
-    point m_pt;
-    m_pt.x = pt->x;
-    m_pt.y = sf->h - pt->y;
-    return &m_pt;
+    *x += (sf->w)/2;
+    *y = (sf->h) - *y;
 }
 
 void Graphic::setdx(float dx)
