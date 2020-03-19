@@ -8,6 +8,8 @@ class Animation
     private:
         int num = 0;            //number of frames
         int cf = 0;             //current frame
+        //TODO: int framerate = 30;
+        //TODO: bool cycled = false;
         SDL_Surface ** frames;  //array of frames pointers
         SDL_Rect image_size;    //common images size of this animation
 
@@ -44,7 +46,7 @@ class Animation
             if(cf % num == 0) cf = 0;
         }
 
-        SDL_Surface * addFrame(const char* path)
+        SDL_Surface * loadFrame(const char* path)
         {
             SDL_Surface *image;
             image=IMG_Load(path);
@@ -59,6 +61,8 @@ class Animation
                 return image;
             }
         }
+
+        //TODO: loadFramesRecursievly(FILE* directory){}
 
         void addFrame(SDL_Surface * frame)
         {

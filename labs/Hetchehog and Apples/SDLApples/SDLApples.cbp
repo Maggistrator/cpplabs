@@ -5,6 +5,23 @@
 		<Option title="SDLApples" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[- Спросить на SO про CTRL+A в CodeBlocks
+- Спросить на SO про CTRL+C / CTRL+V
+- Спросить на SO про CTRL+X  (ВАЖНО!)
+- Узнать про переопределение виртуальных функций (что такое virtual)
+- Узнать откуда брать плагины для CodeBlocks
+- Узнать, как писать плагины для CodeBlocks
+- Узнать, как добавить папку как директорию для ресурсов, а не для исходного кода?
+- Как пользоваться объектами, прибегая к конструктору, не пользуясь указателем? А-ля:
+(да!)Animation anim = new Animation();
+	 anim.draw();
+(нет!)Animation * anim = new Animation();
+	   anim->suck();
+- Как заставить работать бесполезный автокомплит - он хуже, чем в notepad++, хотя это даже не среда разработки]]>
+			</notes>
+		</Option>
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/SDLApples" prefix_auto="1" extension_auto="1" />
@@ -16,6 +33,7 @@
 					<Add directory="../../../libs/include" />
 					<Add directory="../../../libs/build" />
 					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add directory="../../../libs/include" />
@@ -30,6 +48,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -45,6 +64,13 @@
 		</Linker>
 		<Unit filename="include/Animation.h" />
 		<Unit filename="include/Body2D.h" />
+		<Unit filename="include/Vector2D.h" />
+		<Unit filename="include/World.h" />
+		<Unit filename="res/hg1.bmp" />
+		<Unit filename="res/hg2.bmp" />
+		<Unit filename="res/hg3.bmp" />
+		<Unit filename="src/Apple.cpp" />
+		<Unit filename="src/Hedgehog.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="tests/AnimationTest.cpp" />
 		<Extensions>

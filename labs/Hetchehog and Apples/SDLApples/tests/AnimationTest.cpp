@@ -21,7 +21,7 @@ void AnimationTest(SDL_Surface * screen){
     //Test with get/set methods
     Animation * anim = new Animation();
 
-    anim->addFrame("hg1.bmp");
+    anim->loadFrame("hg1.bmp");
     anim->addFrame(SDL_LoadBMP("hg2.bmp"));
     anim->addFrame(SDL_LoadBMP("hg3.bmp"));
 
