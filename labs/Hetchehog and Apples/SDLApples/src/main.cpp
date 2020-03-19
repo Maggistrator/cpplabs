@@ -5,6 +5,17 @@
 #endif
 
 #include <SDL/SDL.h>
+
+//Using SDL, SDL_image, standard IO, and strings
+#include <SDL.h>
+#include <SDL_image.h>
+#include <stdio.h>
+#include <string>
+#include "../include/Animation.h"
+
+
+void AnimationTest(SDL_Surface * screen);
+
 //hedgehog
 int main ( int argc, char** argv )
 {
@@ -42,8 +53,10 @@ int main ( int argc, char** argv )
 
     // program main loop
     bool done = false;
-    while (!done)
-    {
+    //while (!done)
+    //{
+        /*
+
         // message processing loop
         SDL_Event event;
         while (SDL_PollEvent(&event))
@@ -66,6 +79,7 @@ int main ( int argc, char** argv )
                 }
             } // end switch
         } // end of message processing
+        */
 
         // DRAWING STARTS HERE
 
@@ -73,13 +87,14 @@ int main ( int argc, char** argv )
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
 
         // draw bitmap
-        SDL_BlitSurface(bmp, 0, screen, &dstrect);
+        //SDL_BlitSurface(bmp, 0, screen, &dstrect);
+        AnimationTest(screen);
 
         // DRAWING ENDS HERE
 
         // finally, update the screen :)
         SDL_Flip(screen);
-    } // end main loop
+    //} // end main loop
 
     // free loaded bitmap
     SDL_FreeSurface(bmp);

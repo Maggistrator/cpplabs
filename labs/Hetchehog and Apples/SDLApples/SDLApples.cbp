@@ -41,10 +41,12 @@
 			<Add option="`sdl-config --cflags`" />
 		</Compiler>
 		<Linker>
-			<Add option="`sdl-config --libs` -l SDL_draw -l SDL_ttf" />
+			<Add option="`sdl-config --libs` -l SDL_draw -l SDL_ttf -l SDL_image" />
 		</Linker>
+		<Unit filename="include/Animation.h" />
 		<Unit filename="include/Body2D.h" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="tests/AnimationTest.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
