@@ -34,6 +34,7 @@
 					<Add directory="../../../libs/build" />
 					<Add directory="include" />
 					<Add directory="src" />
+					<Add directory="engine/include" />
 				</Compiler>
 				<Linker>
 					<Add directory="../../../libs/include" />
@@ -49,6 +50,7 @@
 					<Add option="-O2" />
 					<Add directory="include" />
 					<Add directory="src" />
+					<Add directory="engine/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -62,10 +64,12 @@
 		<Linker>
 			<Add option="`sdl-config --libs` -l SDL_draw -l SDL_ttf -l SDL_image" />
 		</Linker>
-		<Unit filename="include/Animation.h" />
-		<Unit filename="include/Body2D.h" />
-		<Unit filename="include/Vector2D.h" />
-		<Unit filename="include/World.h" />
+		<Unit filename="engine/include/Animation.h" />
+		<Unit filename="engine/include/Body2D.h" />
+		<Unit filename="engine/include/Vector2D.h" />
+		<Unit filename="engine/include/World.h" />
+		<Unit filename="engine/src/Body2D.cpp" />
+		<Unit filename="engine/src/World.cpp" />
 		<Unit filename="res/hg1.bmp" />
 		<Unit filename="res/hg2.bmp" />
 		<Unit filename="res/hg3.bmp" />

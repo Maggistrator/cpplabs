@@ -35,7 +35,7 @@ class Hedgehog : public Body2D
 
             route = {left_bound, right_bound};
 
-            t = type.PLAYER;
+            t = PLAYER;
         }
 
         void update() override {
@@ -44,11 +44,11 @@ class Hedgehog : public Body2D
             else if(position.x > route.y) {direction = LEFT; velocity = direction;}
         }
 
-        void intersects(Body2D * other, Vector2D& dir) override {
-            if(other->t == Body2D.type.ENEMY) velocity = CALM;
-            if(other->t == Body2D.type.SOLID && (dir==direction)) velocity = ;
+        /*void intersects(Body2D& other, Vector2D& direction) override {
+            if(other.t == Body2D.type.ENEMY) velocity = CALM;
+            if(other.t == Body2D.type.SOLID && (dir==direction));
         }
-
+        */
         ~Hedgehog(){
             idle->~Animation();
             moving_left->~Animation();
