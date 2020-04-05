@@ -105,6 +105,7 @@ const Body2D& Body2D::collides(type other_type, World& w, Vector2D& direction)
     position = position + direction;
     static Body2D result = w.collides(other_type, this);
     position = old_position;
+    //TODO: найти способ возвращать NULL, если столкновение не обнаружено, а не то же тело, которое делает вызов
     return result;
 }
 

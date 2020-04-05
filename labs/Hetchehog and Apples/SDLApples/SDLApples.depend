@@ -191,7 +191,7 @@
 	<stdlib.h>
 	<SDL/SDL.h>
 
-1584578143 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/main.cpp
+1585956607 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/main.cpp
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
@@ -199,7 +199,10 @@
 	<SDL_image.h>
 	<stdio.h>
 	<string>
-	"../include/Animation.h"
+	"Hedgehog.cpp"
+	"Apple.cpp"
+	"World.h"
+	<vector>
 
 1584543166 /home/maggistrator/Development/cpplabs/libs/include/SDL/SDL.h
 	"SDL_main.h"
@@ -579,11 +582,11 @@
 1584628501 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/include/Animation.h
 	<SDL_image.h>
 
-1585023501 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/src/Body2D.cpp
+1585880924 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/src/Body2D.cpp
 	"Body2D.h"
 	"World.h"
 
-1585022940 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/include/Body2D.h
+1585879878 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/include/Body2D.h
 	"Animation.h"
 	"Vector2D.h"
 
@@ -592,18 +595,33 @@
 
 1585023488 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/include/Vector2D.h
 
-1585023617 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/include/World.h
+1585884181 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/include/World.h
 	"Body2D.h"
 	"Vector2D.h"
 	<list>
 
-1585023922 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/src/World.cpp
+1585884314 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/engine/src/World.cpp
 	"World.h"
 
-1584636695 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Apple.cpp
-
-1585010978 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Hedgehog.cpp
+1586046314 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Apple.cpp
 	"Body2D.h"
 	"Animation.h"
-	<typeinfo>
+	"World.h"
+	"SDL_image.h"
+
+1586046306 source:/home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Hedgehog.cpp
+	"Body2D.h"
+	"Animation.h"
+	"World.h"
+
+1586046306 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Hedgehog.cpp
+	"Body2D.h"
+	"Animation.h"
+	"World.h"
+
+1586046314 /home/maggistrator/Development/cpplabs/labs/Hetchehog and Apples/SDLApples/src/Apple.cpp
+	"Body2D.h"
+	"Animation.h"
+	"World.h"
+	"SDL_image.h"
 

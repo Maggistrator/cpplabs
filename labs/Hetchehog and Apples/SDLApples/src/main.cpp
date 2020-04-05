@@ -6,17 +6,17 @@
 
 #include <SDL/SDL.h>
 
-//Using SDL, SDL_image, standard IO, and strings
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
 #include <string>
-#include "../include/Animation.h"
+#include "Hedgehog.cpp"
+#include "Apple.cpp"
+#include "World.h"
+#include <vector>
 
+#define APPLE_COUNT 5
 
-void AnimationTest(SDL_Surface * screen);
-
-//hedgehog
 int main ( int argc, char** argv )
 {
     // initialize SDL video
@@ -25,8 +25,6 @@ int main ( int argc, char** argv )
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 1;
     }
-
-    // make sure SDL cleans up before exit
     atexit(SDL_Quit);
 
     // create a new window
@@ -38,26 +36,23 @@ int main ( int argc, char** argv )
         return 1;
     }
 
-    // load an image
-    SDL_Surface* bmp = SDL_LoadBMP("cb.bmp");
-    if (!bmp)
-    {
-        printf("Unable to load bitmap: %s\n", SDL_GetError());
-        return 1;
-    }
+    //------------------------------------------------------------------
+    //OBJECTS HERE
+    World scene;
+    Hedgehog hg(440, 280, scene);
 
-    // centre the bitmap on screen
-    SDL_Rect dstrect;
-    dstrect.x = (screen->w - bmp->w) / 2;
-    dstrect.y = (screen->h - bmp->h) / 2;
+    std::vector<Apple> apples;
+    for(int i = 0; i < APPLE_COUNT; i++)
+    {
+        apples.push_back(Apple(i*100, -50, scene));
+    }
+    //------------------------------------------------------------------
 
     // program main loop
     bool done = false;
-    //while (!done)
-    //{
-        /*
-
-        // message processing loop
+    while (!done)
+    {
+        //======message processing loop======
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
@@ -72,34 +67,26 @@ int main ( int argc, char** argv )
                 // check for keypresses
             case SDL_KEYDOWN:
                 {
-                    // exit if ESCAPE is pressed
-                    if (event.key.keysym.sym == SDLK_ESCAPE)
-                        done = true;
+                    if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
+                    if (event.key.keysym.sym == SDLK_RETURN) ; //Apples fall here
                     break;
                 }
             } // end switch
-        } // end of message processing
-        */
+        } //======end of message processing=====
 
-        // DRAWING STARTS HERE
 
-        // clear screen
+        // UPDATE
+        hg.update();
+        for(Apple apple: apples) apple.update();
+
+        // RENDER
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
+        hg.render(screen);
+        for(Apple apple: apples) apple.render(screen);
 
-        // draw bitmap
-        //SDL_BlitSurface(bmp, 0, screen, &dstrect);
-        AnimationTest(screen);
-
-        // DRAWING ENDS HERE
-
-        // finally, update the screen :)
         SDL_Flip(screen);
-    //} // end main loop
+    } // end main loop
 
-    // free loaded bitmap
-    SDL_FreeSurface(bmp);
-
-    // all is well ;)
     printf("Exited cleanly\n");
     return 0;
 }

@@ -70,6 +70,7 @@
 		<Unit filename="engine/include/World.h" />
 		<Unit filename="engine/src/Body2D.cpp" />
 		<Unit filename="engine/src/World.cpp" />
+		<Unit filename="res/apple.bmp" />
 		<Unit filename="res/hg1.bmp" />
 		<Unit filename="res/hg2.bmp" />
 		<Unit filename="res/hg3.bmp" />

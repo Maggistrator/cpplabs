@@ -31,6 +31,9 @@ class Body2D
 
         void setSprite(SDL_Surface *);
 
+        //потенциально перегружаемый метод для предварительной подготовки тела
+        virtual void init(){}
+
         void render(SDL_Surface *);
 
         virtual void update();

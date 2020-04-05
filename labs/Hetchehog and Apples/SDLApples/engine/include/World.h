@@ -12,14 +12,18 @@ class World
 
     public:
     SDL_Surface * background;
-    SDL_Rect bounds;
+    SDL_Rect * bounds;
     std::list<Body2D> entities;
+
+    virtual void init();
 
     virtual void update();
 
     virtual void render(SDL_Surface *);
 
     const Body2D& collides(Body2D::type, Body2D *);
+
+    void setSize(int width, int height);
 
     void setBackground(SDL_Surface *);
 
