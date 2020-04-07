@@ -17,6 +17,11 @@
 
 #define APPLE_COUNT 5
 
+
+void hedgehog_shooted(){
+    if(hg.collides(hitbox))
+}
+
 int main ( int argc, char** argv )
 {
     // initialize SDL video
