@@ -7,12 +7,16 @@
 #endif
 
 #include <SDL/SDL.h>
-#include "Apple.h"
-#include "Hedgehog.h"
+#include "../Apple.h"
+
+//The attributes of the screen
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
+const int SCREEN_BPP = 32;
 
 using namespace std;
 
-int main ()
+int appletest_main ()
 {
     //Стандарная инициализация SDL ====================================
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -32,18 +36,15 @@ int main ()
     }
     //Конец инициализации экрана =======================================
 
-    //OBJECTS
+    //OBJ
+    Apple single_apple(100, -50, 430, screen);
     Apple multiple_apples[] = {
-        Apple(0, -200, 430, screen),
-        Apple(100, -50, 430, screen),
-        Apple(150, -150, 430, screen),
-        Apple(320, -370, 430, screen),
+        Apple(0, -50, 430, screen),
+        Apple(150, -50, 430, screen),
+        Apple(320, -70, 430, screen),
         Apple(460, -120, 430, screen),
-        Apple(590, -160, 430, screen)
+        Apple(590, -60, 430, screen)
     };
-
-    Hedgehog hg(0, 280, 0, 440);
-
 
     // основной игровой цикл ===========================================
     bool done = false; // флаг завершения главного цикла
@@ -65,24 +66,24 @@ int main ()
                 {
                     if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
                     //Перезапуск игры по SPACE (не работает)
-                    /*
-                    if (event.key.keysym.sym == SDLK_SPACE)
-                    {
-                        multiple_apples[0] = Apple(0, -200, 430, screen);
-                        multiple_apples[1] = Apple(100, -50, 430, screen);
-                        multiple_apples[2] = Apple(150, -150, 430, screen);
-                        multiple_apples[3] = Apple(320, -370, 430, screen);
-                        multiple_apples[4] = Apple(460, -120, 430, screen);
-                        multiple_apples[5] = Apple(590, -160, 430, screen);
-                        hg.reanimate();
-                    }
-                    */
+//                    if (event.key.keysym.sym == SDLK_SPACE)
+//                    {
+//                        multiple_apples = {
+//                            Apple(0, -50, 430),
+//                            Apple(150, -50, 430),
+//                            Apple(320, -70, 430),
+//                            Apple(460, -120, 430),
+//                            Apple(590, -60, 430)
+//                        }
+//                        hg.reanimate();
+//                    }
 
                     // Переключатель падения яблок
-                    if (event.key.keysym.sym == SDLK_RETURN && !hg.isHit())
+                    if (event.key.keysym.sym == SDLK_RETURN && !single_apple.falling)
                     {
                         for(Apple & apple: multiple_apples) apple.fall();
                         cout << "falling";
+                        single_apple.fall();
                     }
                     break;
                 }
@@ -92,24 +93,15 @@ int main ()
 
         // UPDATE  -------------------------------------------------
 
-        for(Apple & apple: multiple_apples)
-        {
-            apple.update();
-            if(hg.collides(apple))
-            {
-                hg.hit();
-                apple.hit();
-            }
-        }
-        hg.update();
+        for(Apple & apple: multiple_apples) apple.update();
+        single_apple.update();
 
 
         // RENDER  --------------------------------------------------
 
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
         for(Apple & apple: multiple_apples) apple.render(screen);
-        hg.render(screen);
-
+        single_apple.render(screen);
 
         SDL_Flip(screen);
     } // end main loop

@@ -36,10 +36,12 @@ class Hedgehog {
             idle->loadFrame("res/hg3.bmp");
 
             moving_left = new Animation();
-            moving_left->loadFrame("res/hg1.bmp");
+            moving_left->loadFrame("res/hg2.bmp");
 
             moving_right = new Animation();
-            moving_right->loadFrame("res/hg2.bmp");
+            moving_right->loadFrame("res/hg1.bmp");
+
+            current = moving_right;
 
             hitbox.x = x;
             hitbox.y = y;
@@ -49,6 +51,7 @@ class Hedgehog {
 
         void update()
         {
+            SDL_Delay( 10 );
             if(!m_hit)
             {
                 if(x + speed > left_bound && x + speed < right_bound) x += speed;
@@ -61,7 +64,7 @@ class Hedgehog {
 
         void render(SDL_Surface * target)
         {
-            current->render(target);
+            current->render(target, &hitbox);
         }
 
         bool collides(Apple& other)

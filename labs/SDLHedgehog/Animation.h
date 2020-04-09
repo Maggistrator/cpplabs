@@ -41,9 +41,9 @@ class Animation
             }
         }
 
-        void render(SDL_Surface * target)
+        void render(SDL_Surface * target, SDL_Rect * position)
         {
-            SDL_BlitSurface(*(frames+cf++), 0, target, &image_size);
+            SDL_BlitSurface(*(frames+cf++), NULL, target, position);
             if(cf % num == 0) cf = 0;
         }
 
