@@ -7,8 +7,12 @@
 #endif
 
 #include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include "Apple.h"
 #include "Hedgehog.h"
+
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
 
 using namespace std;
 
@@ -21,16 +25,26 @@ int main ()
         return 1;
     }
     atexit(SDL_Quit);
-    //=================================================================
 
-    //Экран и его свойства (не все работают) ==========================
-    SDL_Surface* screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
+    if (TTF_Init() < 0) {
+        printf( "Unable to init SDL_TTF: %s\n", SDL_GetError() );
+        return 2;
+    }
+    atexit(TTF_Quit);
+    srand (time(NULL));
+
+    SDL_Surface* screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_SWSURFACE);
     if ( !screen )
     {
-        printf("Unable to set 640x480 video: %s\n", SDL_GetError());
-        return 1;
+        printf("Unable to set %dx%d video: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
+        return 3;
     }
-    //Конец инициализации экрана =======================================
+
+
+    TTF_Font* pap_font = TTF_OpenFont("res/papyrus.ttf", 18);
+
+    SDL_WM_SetCaption( "SDL Hedgehog", NULL );
+    //Конец инициализации SDL =======================================
 
     //OBJECTS
     Apple multiple_apples[] = {
@@ -44,6 +58,15 @@ int main ()
 
     Hedgehog hg(0, 280, 0, 440);
 
+    //FONT SETTINGS ====================================================
+
+    SDL_Color white;
+    white.r = white.g = white.b = white.unused = 0xFF;
+    SDL_Surface * play_text = TTF_RenderUTF8_Blended(pap_font, "Press ENTER to drop some apples", white);
+    SDL_Surface * restart_text = TTF_RenderUTF8_Blended(pap_font, "Press SPACE to play again", white);
+    SDL_Rect text_position;
+    text_position.x = (SCREEN_WIDTH-280)/2;
+    text_position.y = 0;
 
     // основной игровой цикл ===========================================
     bool done = false; // флаг завершения главного цикла
@@ -64,25 +87,19 @@ int main ()
             case SDL_KEYDOWN:
                 {
                     if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
-                    //Перезапуск игры по SPACE (не работает)
-                    /*
+
                     if (event.key.keysym.sym == SDLK_SPACE)
                     {
-                        multiple_apples[0] = Apple(0, -200, 430, screen);
-                        multiple_apples[1] = Apple(100, -50, 430, screen);
-                        multiple_apples[2] = Apple(150, -150, 430, screen);
-                        multiple_apples[3] = Apple(320, -370, 430, screen);
-                        multiple_apples[4] = Apple(460, -120, 430, screen);
-                        multiple_apples[5] = Apple(590, -160, 430, screen);
+
+                        for(Apple & apple: multiple_apples)
+                            apple.reset(apple.x, apple.y - rand() % 100 - 480);
                         hg.reanimate();
                     }
-                    */
 
                     // Переключатель падения яблок
                     if (event.key.keysym.sym == SDLK_RETURN && !hg.isHit())
                     {
                         for(Apple & apple: multiple_apples) apple.fall();
-                        cout << "falling";
                     }
                     break;
                 }
@@ -107,13 +124,16 @@ int main ()
         // RENDER  --------------------------------------------------
 
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
+
         for(Apple & apple: multiple_apples) apple.render(screen);
         hg.render(screen);
-
+        if(!hg.isHit()) SDL_BlitSurface( play_text, NULL, screen, &text_position);
+        else SDL_BlitSurface( restart_text, NULL, screen, &text_position);
 
         SDL_Flip(screen);
     } // end main loop
 
+    TTF_CloseFont(pap_font);
     printf("Exited cleanly\n");
     return 0;
 }

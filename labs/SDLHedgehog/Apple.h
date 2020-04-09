@@ -63,6 +63,13 @@ class Apple{
             falling = false;
         }
 
+        void reset(int x, int y){
+            this->x = x;
+            this->y = y;
+            hitbox.x = x;
+            hitbox.y = y;
+        }
+
         ~Apple()
         {
             SDL_FreeSurface(image);

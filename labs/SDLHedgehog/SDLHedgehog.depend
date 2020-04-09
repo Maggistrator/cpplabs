@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1586470667 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/main.cpp
+1586474119 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
 	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
 	"Apple.h"
 	"Hedgehog.h"
 
@@ -203,7 +204,7 @@
 	"SDL/begin_code.h"
 	"SDL/close_code.h"
 
-1586465516 /home/sova/Development/Memeland/sdl/labs/SDLHedgehog/Apple.h
+1586475613 /home/sova/Development/Memeland/sdl/labs/SDLHedgehog/Apple.h
 	<SDL/SDL.h>
 	<SDL_image.h>
 

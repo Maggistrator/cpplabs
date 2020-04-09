@@ -41,7 +41,6 @@
 			<Add directory="../../libs/build" />
 		</Linker>
 		<Unit filename="main.cpp" />
-		<Unit filename="res/fonts/Papyrus.ttf" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -7,19 +7,9 @@
 			<Cursor1 position="691" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="engine/include/Body2D.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="576" topLine="38" />
-		</Cursor>
-	</File>
 	<File name="engine/include/Animation.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3051" topLine="71" />
-		</Cursor>
-	</File>
-	<File name="engine/include/Vector2D.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="18" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src/main.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,14 +17,19 @@
 			<Cursor1 position="0" topLine="12" />
 		</Cursor>
 	</File>
+	<File name="engine/include/Vector2D.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="engine/include/Body2D.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="576" topLine="38" />
+		</Cursor>
+	</File>
 	<File name="engine/src/Body2D.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1680" topLine="103" />
-		</Cursor>
-	</File>
-	<File name="engine/include/World.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="215" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src/Hedgehog.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -42,14 +37,19 @@
 			<Cursor1 position="1650" topLine="57" />
 		</Cursor>
 	</File>
+	<File name="src/Apple.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="262" topLine="11" />
+		</Cursor>
+	</File>
 	<File name="tests/AnimationTest.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="732" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src/Apple.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="engine/include/World.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="262" topLine="11" />
+			<Cursor1 position="215" topLine="0" />
 		</Cursor>
 	</File>
 	<EditorTabsLayout layout="@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=407;besth=116;minw=407;minh=116;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
