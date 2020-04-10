@@ -49,12 +49,12 @@ int main()
 
     //OBJECTS
     Apple multiple_apples[] = {
-        Apple(0, -200, 430, screen),
-        Apple(100, -50, 430, screen),
-        Apple(150, -150, 430, screen),
-        Apple(320, -370, 430, screen),
-        Apple(460, -120, 430, screen),
-        Apple(590, -160, 430, screen)
+        Apple(0, -200, 430, screen, Apple::RED),
+        Apple(100, -50, 430, screen, Apple::YELLOW),
+        Apple(150, -150, 430, screen, Apple::RED),
+        Apple(320, -370, 430, screen, Apple::RED),
+        Apple(460, -120, 430, screen, Apple::RED),
+        Apple(590, -160, 430, screen, Apple::YELLOW)
     };
 
     Hedgehog hg(0, 340, 0, 440);

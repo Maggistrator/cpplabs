@@ -11,10 +11,12 @@ class Apple{
     SDL_Surface * image = NULL;
     bool falling = false;
 
+    enum Color{RED, YELLOW};
+
         SDL_Rect hitbox;
 
         Apple(){}
-        Apple(int e_x, int e_y, int e_ground, SDL_Surface * target) : x(e_x), y(e_y), ground(e_ground)
+        Apple(int e_x, int e_y, int e_ground, SDL_Surface * target, Apple::Color color) : x(e_x), y(e_y), ground(e_ground)
         {
             hitbox.x = e_x;
             hitbox.y = e_y;
@@ -23,7 +25,8 @@ class Apple{
 
             //image = SDL_LoadBMP("res/apple.bmp");
 
-            image=IMG_Load("res/apple.bmp");
+            if(color == RED) image = IMG_Load("res/apple.bmp");
+            else image = IMG_Load("res/apple_yellow.bmp");
         }
 
         void fall()

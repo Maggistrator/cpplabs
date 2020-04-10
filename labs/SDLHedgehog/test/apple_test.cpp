@@ -34,13 +34,13 @@ int appletest_main ()
     }
 
     //OBJ
-    Apple single_apple(100, -50, 430, screen);
+    Apple single_apple(100, -50, 430, screen, Apple::RED);
     Apple multiple_apples[] = {
-        Apple(0, -50, 430, screen),
-        Apple(150, -50, 430, screen),
-        Apple(320, -70, 430, screen),
-        Apple(460, -120, 430, screen),
-        Apple(590, -60, 430, screen)
+        Apple(0, -50, 430, screen, Apple::YELLOW),
+        Apple(150, -50, 430, screen, Apple::YELLOW),
+        Apple(320, -70, 430, screen, Apple::RED),
+        Apple(460, -120, 430, screen, Apple::RED),
+        Apple(590, -60, 430, screen, Apple::RED)
     };
 
     bool done = false;

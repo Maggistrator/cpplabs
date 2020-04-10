@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586542709 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/main.cpp
+1586548915 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/main.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -205,11 +205,11 @@
 	"SDL/begin_code.h"
 	"SDL/close_code.h"
 
-1586542432 /home/sova/Development/Memeland/sdl/labs/SDLHedgehog/Apple.h
+1586548781 /home/sova/Development/Memeland/sdl/labs/SDLHedgehog/Apple.h
 	<SDL/SDL.h>
 	<SDL_image.h>
 
-1586467192 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/test/animation_test.cpp
+1586542947 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/test/animation_test.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
@@ -219,7 +219,7 @@
 	<string>
 	"../Animation.h"
 
-1586542823 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/test/apple_test.cpp
+1586548932 source:/home/sova/Development/Memeland/sdl/labs/SDLHedgehog/test/apple_test.cpp
 	<iostream>
 	<cstdlib>
 	<stdlib.h>
