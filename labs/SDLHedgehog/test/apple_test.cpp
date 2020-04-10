@@ -25,16 +25,13 @@ int appletest_main ()
         return 1;
     }
     atexit(SDL_Quit);
-    //=================================================================
 
-    //Экран и его свойства (не все работают) ==========================
     SDL_Surface* screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
     if ( !screen )
     {
         printf("Unable to set 640x480 video: %s\n", SDL_GetError());
         return 1;
     }
-    //Конец инициализации экрана =======================================
 
     //OBJ
     Apple single_apple(100, -50, 430, screen);
@@ -46,39 +43,22 @@ int appletest_main ()
         Apple(590, -60, 430, screen)
     };
 
-    // основной игровой цикл ===========================================
-    bool done = false; // флаг завершения главного цикла
+    bool done = false;
     while (!done)
     {
-        //====== начало перехвата событий ======
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
             switch (event.type)
             {
-            // переключатель выхода
             case SDL_QUIT:
                 done = true;
                 break;
 
-            // переключатель пользовательских нажатий
             case SDL_KEYDOWN:
                 {
                     if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
-                    //Перезапуск игры по SPACE (не работает)
-//                    if (event.key.keysym.sym == SDLK_SPACE)
-//                    {
-//                        multiple_apples = {
-//                            Apple(0, -50, 430),
-//                            Apple(150, -50, 430),
-//                            Apple(320, -70, 430),
-//                            Apple(460, -120, 430),
-//                            Apple(590, -60, 430)
-//                        }
-//                        hg.reanimate();
-//                    }
 
-                    // Переключатель падения яблок
                     if (event.key.keysym.sym == SDLK_RETURN && !single_apple.falling)
                     {
                         for(Apple & apple: multiple_apples) apple.fall();
@@ -88,7 +68,7 @@ int appletest_main ()
                     break;
                 }
             } // end switch
-        } //====== конец перехвата событий =====
+        }
 
 
         // UPDATE  -------------------------------------------------

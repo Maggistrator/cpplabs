@@ -11,7 +11,7 @@
 
 using namespace std;
 
-// Раскомментировать
+// убрать "hedgehogtest_", и закомментить основной main() чтобы запустить тест
 int hedgehogtest_main ()
 {
     //Стандарная инициализация SDL ====================================
@@ -21,41 +21,27 @@ int hedgehogtest_main ()
         return 1;
     }
     atexit(SDL_Quit);
-    //=================================================================
-
-    //Экран и его свойства (не все работают) ==========================
     SDL_Surface* screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
-    if ( !screen )
-    {
-        printf("Unable to set 640x480 video: %s\n", SDL_GetError());
-        return 1;
-    }
-    //Конец инициализации экрана =======================================
 
     //OBJECTS
     Hedgehog hg(0, 280, 0, 440);
 
-    // основной игровой цикл ===========================================
-    bool done = false; // флаг завершения главного цикла
+    bool done = false;
     while (!done)
     {
-        //====== начало перехвата событий ======
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
             switch (event.type)
             {
-            // переключатель выхода
             case SDL_QUIT:
                 done = true;
                 break;
 
-            // переключатель пользовательских нажатий
             case SDL_KEYDOWN:
                 {
                     if (event.key.keysym.sym == SDLK_ESCAPE) done = true;
 
-                    // Переключатель падения яблок
                     if (event.key.keysym.sym == SDLK_RETURN)
                     {
                         cout << "falling";
@@ -63,12 +49,12 @@ int hedgehogtest_main ()
                     break;
                 }
             } // end switch
-        } //====== конец перехвата событий =====
+        }
 
 
         // UPDATE  -------------------------------------------------
 
-        hg.update();
+        hg.update(0);
 
         // RENDER  --------------------------------------------------
 

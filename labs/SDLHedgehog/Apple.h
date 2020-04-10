@@ -21,9 +21,9 @@ class Apple{
             hitbox.w = 50;
             hitbox.h = 50;
 
-            SDL_Surface *temp = SDL_LoadBMP("res/apple.bmp");
-            image = SDL_ConvertSurface(temp, target->format, SDL_SWSURFACE);
-            SDL_FreeSurface(temp);
+            //image = SDL_LoadBMP("res/apple.bmp");
+
+            image=IMG_Load("res/apple.bmp");
         }
 
         void fall()

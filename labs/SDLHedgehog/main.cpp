@@ -10,13 +10,14 @@
 #include <SDL/SDL_ttf.h>
 #include "Apple.h"
 #include "Hedgehog.h"
+#include <string>
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
 using namespace std;
 
-int main ()
+int main()
 {
     //Стандарная инициализация SDL ====================================
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -56,7 +57,12 @@ int main ()
         Apple(590, -160, 430, screen)
     };
 
-    Hedgehog hg(0, 280, 0, 440);
+    Hedgehog hg(0, 340, 0, 440);
+
+    // LOGIC UTILITIES
+
+    int delta = 0;
+    int prev_frame_time = SDL_GetTicks();
 
     //FONT SETTINGS ====================================================
 
@@ -109,6 +115,9 @@ int main ()
 
         // UPDATE  -------------------------------------------------
 
+        delta = SDL_GetTicks() - prev_frame_time;
+        prev_frame_time = SDL_GetTicks();
+
         for(Apple & apple: multiple_apples)
         {
             apple.update();
@@ -118,15 +127,16 @@ int main ()
                 apple.hit();
             }
         }
-        hg.update();
+
+       hg.update(delta);
 
 
         // RENDER  --------------------------------------------------
 
         SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
 
-        for(Apple & apple: multiple_apples) apple.render(screen);
         hg.render(screen);
+        for(Apple & apple: multiple_apples) apple.render(screen);
         if(!hg.isHit()) SDL_BlitSurface( play_text, NULL, screen, &text_position);
         else SDL_BlitSurface( restart_text, NULL, screen, &text_position);
 

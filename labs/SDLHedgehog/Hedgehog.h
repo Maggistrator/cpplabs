@@ -7,12 +7,13 @@
 
 class Hedgehog {
     private:
-        int x, y, speed = 5;
+        int x, y, speed = 1;
 
         bool m_hit = false;
 
         //Указатели на доступные анимации
         Animation * idle;
+        Animation * idle_right;
         Animation * moving_right;
         Animation * moving_left;
 
@@ -20,8 +21,8 @@ class Hedgehog {
 
         //границы маршрута
         int left_bound, right_bound;
-
         SDL_Rect hitbox;
+        SDL_Rect drawrect;
 
         void turn()
         {
@@ -33,38 +34,55 @@ class Hedgehog {
         Hedgehog(int e_x, int e_y, int e_left_bound, int e_right_bound) : x(e_x), y(e_y), left_bound(e_left_bound), right_bound(e_right_bound)
         {
             idle = new Animation();
-            idle->loadFrame("res/hg3.bmp");
+            idle->loadFrame("res/idle.bmp");
+
+            idle_right = new Animation();
+            idle_right->loadFrame("res/idler.bmp");
 
             moving_left = new Animation();
+            moving_left->loadFrame("res/hg1.bmp");
             moving_left->loadFrame("res/hg2.bmp");
+            moving_left->loadFrame("res/hg3.bmp");
+            moving_left->loadFrame("res/hg4.bmp");
 
             moving_right = new Animation();
-            moving_right->loadFrame("res/hg1.bmp");
+            moving_right->loadFrame("res/hgr1.bmp");
+            moving_right->loadFrame("res/hgr2.bmp");
+            moving_right->loadFrame("res/hgr3.bmp");
+            moving_right->loadFrame("res/hgr4.bmp");
 
             current = moving_right;
 
-            hitbox.x = x;
-            hitbox.y = y;
-            hitbox.w = 200;
-            hitbox.h = 200;
+            hitbox.x = x + 30;
+            hitbox.y = y + 30;
+            hitbox.w = 140;
+            hitbox.h = 100;
+
+            drawrect.x = x;
+            drawrect.y = y;
+            drawrect.w = 200;
+            drawrect.h = 140;
         }
 
-        void update()
+        void update(int delta)
         {
-            SDL_Delay( 10 );
+
             if(!m_hit)
             {
                 if(x + speed > left_bound && x + speed < right_bound) x += speed;
                 else turn();
 
-                hitbox.x = x;
-                hitbox.y = y;
+                hitbox.x = x + 50;
+                hitbox.y = y + 50;
+
+                drawrect.x = x;
+                drawrect.y = y;
             }
         }
 
         void render(SDL_Surface * target)
         {
-            current->render(target, &hitbox);
+            current->render(target, &drawrect);
         }
 
         bool collides(Apple& other)
@@ -110,7 +128,7 @@ class Hedgehog {
         void hit()
         {
             m_hit = true;
-            current = idle;
+            current = speed > 0 ? idle_right : idle;
         }
 
         bool isHit(){ return m_hit; }

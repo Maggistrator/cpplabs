@@ -14,6 +14,8 @@ class Animation
         SDL_Surface ** frames;  //array of frames pointers
         SDL_Rect image_size;    //common images size of this animation
 
+        long prev_frm;
+
         void recalcVisibleRect(SDL_Surface * frame)
         {
             image_size.w = frame->w > image_size.w ? frame->w : image_size.w;
@@ -39,11 +41,19 @@ class Animation
                 image_size.w = (*frames)->w;
                 image_size.h = (*frames)->h;
             }
+            prev_frm = SDL_GetTicks();
         }
 
         void render(SDL_Surface * target, SDL_Rect * position)
         {
-            SDL_BlitSurface(*(frames+cf++), NULL, target, position);
+            SDL_BlitSurface(*(frames+cf), NULL, target, position);
+
+            if((SDL_GetTicks() - prev_frm) > 1000/(num * 2) )
+            {
+                prev_frm = SDL_GetTicks();
+                cf++;
+            }
+
             if(cf % num == 0) cf = 0;
         }
 
