@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1600205745 source:/home/sova/Development/source/TRailroad/main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"list_stack.h"
+	"carrige.h"
+
+1600205379 /home/sova/Development/source/TRailroad/list_stack.h
+	"carrige.h"
+
+1600138826 /home/sova/Development/source/TRailroad/carrige.h
+
